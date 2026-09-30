@@ -314,3 +314,4 @@ Thresholds are generic similarity and probability levels tuned on the **dev** sp
 </div>
 
 Open `runs/<timestamp>/dashboard.html` to explore the generated trace timeline.
+The dashboard is self-contained and can be opened directly in a browser.
