@@ -312,3 +312,5 @@ Thresholds are generic similarity and probability levels tuned on the **dev** sp
 *Start early. Cite honestly. Patch, don't restart.*
 
 </div>
+
+Open `runs/<timestamp>/dashboard.html` to explore the generated trace timeline.
