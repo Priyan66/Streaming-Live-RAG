@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Streaming Live RAG · Trace · Team Hackhazards</title>
+<style>
+:root{--bg:#f4f5f8;--card:#fff;--ink:#14161c;--mut:#727889;--line:#e6e8ef;--acc:#4f6bff;--acc2:#8a5cff;--good:#17a673;--warn:#d98a12;--soft:#f0f2fa;--sh:0 1px 2px rgba(20,22,40,.04),0 12px 32px -12px rgba(20,22,40,.12)}
+:root[data-theme=dark]{--bg:#0a0b10;--card:#12141c;--ink:#eceef5;--mut:#7f869b;--line:#20232f;--acc:#7b92ff;--acc2:#a688ff;--good:#3ed598;--warn:#f0b04a;--soft:#181b26;--sh:0 1px 0 rgba(255,255,255,.03) inset,0 16px 40px -16px rgba(0,0,0,.7)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 -apple-system,"Segoe UI",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background .3s}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:12px max(20px,calc(50% - 450px));backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:9px;font-weight:650;letter-spacing:-.01em}
+.logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;box-shadow:0 4px 14px -4px var(--acc)}
+.team{margin-left:4px;padding:3px 11px;border-radius:99px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent);border:1px solid color-mix(in srgb,var(--acc) 30%,transparent)}
+.sp{flex:1}
+button{font:inherit;cursor:pointer;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 13px;transition:.2s}
+button:hover{border-color:var(--acc);transform:translateY(-1px)}
+main{max-width:900px;margin:auto;padding:0 20px 40px}
+.hero{position:relative;margin:28px 0 22px;padding:34px 30px;border-radius:22px;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--acc) 22%,var(--card)),var(--card) 60%),var(--card);border:1px solid var(--line);box-shadow:var(--sh)}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--acc2) 35%,transparent),transparent 70%);filter:blur(10px)}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+h1{font-size:34px;line-height:1.1;letter-spacing:-.03em;margin:8px 0 8px;background:linear-gradient(120deg,var(--ink),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0;max-width:560px;color:var(--mut)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:24px;letter-spacing:-.02em}.stat span{color:var(--mut);font-size:12px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+.chip{font-size:12.5px;padding:4px 12px}.chip.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent}
+.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:12px;margin:0 0 18px}
+.legend i{display:inline-block;vertical-align:middle;margin-right:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:0 0 16px;box-shadow:var(--sh);animation:up .5s both;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--acc) 40%,var(--line))}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:650;letter-spacing:.05em;text-transform:uppercase;padding:2px 10px;border-radius:99px;color:#fff;background:var(--acc)}
+.pill.refinement{background:var(--acc2)}.pill.presentation{background:var(--warn)}
+.sc{margin-left:auto;color:var(--mut);font-size:12px}
+.m{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 2px;color:var(--mut);font-size:12px}.m b{color:var(--ink);font-weight:600}
+.q{margin:12px 0;padding:10px 14px;border-left:3px solid var(--acc);background:var(--soft);border-radius:0 10px 10px 0;font-style:italic}
+.note{font-size:12.5px;color:var(--mut);margin:0 0 6px}.note:before{content:"◆ ";color:var(--acc)}
+svg{width:100%;height:auto;display:block;margin:4px 0 10px}.g{stroke:var(--line)}.tk{fill:var(--mut);font-size:10px}.lb{fill:var(--mut);font-size:10.5px}
+.cl{display:grid;gap:8px}.row{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.row p{grid-column:1/-1;margin:0;font-size:13.5px}
+.tag{font-size:11px;font-weight:600;padding:1px 9px;border-radius:99px;border:1px solid}
+.cite{color:var(--acc);border-color:color-mix(in srgb,var(--acc) 35%,transparent);background:color-mix(in srgb,var(--acc) 9%,transparent)}
+.s-new{color:var(--acc)}.s-preserved{color:var(--mut)}.s-added{color:var(--good)}.s-patched{color:var(--warn)}.s-reconfirmed{color:var(--good)}
+.rl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rl .id{color:var(--mut);font-size:11.5px}
+footer{text-align:center;color:var(--mut);font-size:12.5px;padding:26px 20px 40px;border-top:1px solid var(--line)}
+footer b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:15px}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}h1{font-size:26px}.hero{padding:24px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav><div class="brand"><span class="logo"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>Streaming Live RAG</div><span class="team">TEAM HACKHAZARDS</span><span class="sp"></span><button id="th" aria-label="Toggle theme">◐ Theme</button></nav>
+<main>
+<section class="hero"><div class="eyebrow">Team Hackhazards · Samsung PRISM GenAI Hackathon · Theme 4</div>
+<h1>Live retrieval trace</h1><p>Every fork, patch and citation from the streaming engine, replayed on a timeline. Retrieval starts while the user is still speaking.</p></section>
+<div class="stats" id="stats"></div>
+<div class="bar" id="flt"></div>
+<div class="legend"><span><i style="width:9px;height:9px;border-radius:50%;background:var(--acc)"></i>transcript chunk</span><span><i style="width:18px;height:7px;border-radius:9px;background:var(--good)"></i>promoted branch</span><span><i style="width:18px;height:7px;border-radius:9px;background:var(--acc)"></i>alive branch</span><span><i style="width:8px;height:8px;border-radius:50%;border:1.5px solid var(--ink)"></i>retrieval</span><span><i style="width:9px;height:9px;border-radius:50%;background:var(--warn)"></i>patch retrieval</span><span><i style="width:0;border-left:2px dashed var(--warn);height:11px"></i>utterance end</span><span>◆ answer ready</span></div>
+<div id="out"></div>
+</main>
+<footer><b>Team Hackhazards</b><br>Samsung PRISM GenAI Hackathon · 3rd Edition · Theme 4<br><span class="mono">5 sessions · 9 turns · 219 trace events</span></footer>
+<script>
+const T={"Doc_12 §3":"The Deccan Conference Centre has meeting halls for groups of 25 to 150 people.","Doc_31 §4":"Cancellations made 15 to 29 days before the event forfeit 50 percent of the deposit. Cancellations made less than 15 days before the event forfeit the entire deposit and 25 percent of the remaining balance.","Doc_09 §2":"External caterers are permitted only at Riverside Studio in Pune and at the Andheri Tech Hub in Mumbai. An external caterer must be on the company's approved vendor list and must hold a valid FSSAI food safety licence.","Doc_05 §2":"Employees are reimbursed for actual and reasonable business expenses incurred during an approved trip.","Doc_06 §1":"This addendum applies in addition to the standard reimbursement rules whenever a business trip crosses a national border.","Doc_07 §2":"A booking made after the travel has already taken place, such as reimbursing a ticket the employee bought during the trip, is treated as a post-travel booking exception.","Doc_10 §1":"Employees travelling on business to Tier 1 cities receive a per diem of INR 2,000 per day for meals and incidental expenses.","Doc_33 §2":"If a television or display shows no picture, first check that the power cable and HDMI cable are firmly connected and that the correct input source is selected.","Doc_09 §1":"Both venues offer a Standard lunch package at INR 650 per person and a Premium lunch package at INR 950 per person.","Doc_12 §2":"Orchid Hall seats up to 40 people in a classroom layout and up to 60 people in a theatre layout."};
+const W="I need to plan a customer workshop in Pune for 30 people, and I need the cancellation policy and the catering options.";
+const WC=[[0,"I need to plan a customer workshop in"],[.8,"Pune for 30 people, and I need"],[1.6,"the cancellation policy and the catering options."]];
+const D=[
+{s:"fee24a3b",t:1,k:"answer",sc:"Compound request",q:W,v:1,f:.815,e:2.1,r:2.134,p:34.1,n:"3 intents on distinct topics → 3 parallel branches, all promoted on utterance end",c:WC,b:[["venue · people hall",.8083,2.133,"promoted",[.8165]],["cancellation policy",1.6186,2.133,"promoted",[1.6196]],["catering options",1.6188,2.133,"promoted",[1.6218]]],pt:[],cl:[["c11",1,"new","Doc_12 §3"],["c12",1,"new","Doc_31 §4"],["c13",1,"new","Doc_09 §2"]]},
+{s:"c06db2a3",t:1,k:"answer",sc:"Late refinement",q:"Summarize the travel reimbursement rule for an employee trip.",v:1,f:.007,e:1.2,r:1.209,p:9.3,c:[[0,"Summarize the travel reimbursement"],[.7,"rule for an employee trip."]],b:[["claim expenses",.0071,1.2088,"promoted",[.0078,.7173]]],pt:[],cl:[["c19",1,"new","Doc_05 §2"]]},
+{s:"c06db2a3",t:2,k:"refinement",sc:"Late refinement",q:"The trip was international and the booking was made after travel.",v:2,f:.84,e:1.4,r:1.422,p:22,n:"Claim graph patched in place: 1 claim preserved, 2 added",c:[[0,"The trip was international and"],[.8,"the booking was made after travel."]],b:[["currency allowance",.8313,1.4,"alive",[.8414]],["post-travel booking",.8315,1.4,"alive",[.8601]]],pt:[],cl:[["c19",1,"preserved","Doc_05 §2"],["c27",1,"added","Doc_06 §1"],["c28",1,"added","Doc_07 §2"]]},
+{s:"25cc355e",t:1,k:"answer",sc:"Presentation restyle",q:W,v:1,f:.801,e:2.1,r:2.102,p:2.1,n:"3 intents on distinct topics → 3 parallel branches, all promoted on utterance end",c:WC,b:[["venue · people hall",.8011,2.1016,"promoted",[.8021]],["cancellation policy",1.6021,2.1017,"promoted",[1.6032]],["catering options",1.6023,2.1018,"promoted",[1.6056]]],pt:[],cl:[["c39",1,"new","Doc_12 §3"],["c40",1,"new","Doc_31 §4"],["c41",1,"new","Doc_09 §2"]]},
+{s:"25cc355e",t:2,k:"presentation",sc:"Presentation restyle",q:"Please repeat your last answer in two bullets.",v:2,f:null,e:1,r:1.001,p:1,n:"Presentation-only turn: retrieval suppressed, 0 retrievals, 0 LLM calls, same verified claims reformatted",c:[[0,"Please repeat your last answer"],[.6,"in two bullets."]],b:[],pt:[],cl:[["c39",1,"new","Doc_12 §3"],["c40",1,"new","Doc_31 §4"],["c41",1,"new","Doc_09 §2"]]},
+{s:"6f9ab71a",t:1,k:"answer",sc:"Topic shift",q:"What is the per diem for a business trip to Pune?",v:1,f:.724,e:1.2,r:1.225,p:25.1,c:[[0,"What is the per diem for"],[.7,"a business trip to Pune?"]],b:[["people hall",.7161,1.2246,"promoted",[.7247]]],pt:[],cl:[["c46",1,"new","Doc_10 §1"]]},
+{s:"6f9ab71a",t:2,k:"answer",sc:"Topic shift",q:"Forget the trip, the TV in our meeting room shows no picture.",v:2,f:.726,e:1.3,r:1.32,p:19.8,n:"Topic shift detected (relation 0.164 < 0.35): claim graph discarded, fork policy re-entered",c:[[0,"Forget the trip, the TV"],[.7,"in our meeting room shows no picture."]],b:[["display cable power",.7112,1.3194,"promoted",[.7271]]],pt:[],cl:[["c52",1,"new","Doc_33 §2"]]},
+{s:"13b9c2f6",t:1,k:"answer",sc:"Slot change",q:"Which venue in Pune works for a workshop with 30 people, and what does lunch catering cost?",v:1,f:.008,e:2.1,r:2.111,p:11.1,n:"Retrieval forked 2.09 s before the utterance ended",c:[[0,"Which venue in Pune works"],[.8,"for a workshop with 30 people,"],[1.6,"and what does lunch catering cost?"]],b:[["venue · people hall",.0081,2.1105,"promoted",[.0091,.8236]],["lunch catering",1.6161,2.1107,"promoted",[1.617]]],pt:[],cl:[["c62",1,"new","Doc_12 §3"],["c63",1,"new","Doc_09 §1"]]},
+{s:"13b9c2f6",t:2,k:"refinement",sc:"Slot change",q:"Actually we are now expecting only 12 people.",v:2,f:.609,e:1.1,r:1.112,p:12.2,n:"Slot change headcount 30 → 12: 2 claims stale, 1 patched, 1 reconfirmed, searched 7 of 71 chunks",c:[[0,"Actually we are now"],[.6,"expecting only 12 people."]],b:[],pt:[[.6101,"lunch catering cost"],[.6326,"venue for 12 people"]],cl:[["c62",2,"patched","Doc_12 §2"],["c63",2,"reconfirmed","Doc_09 §1"]]}
+];
+const $=id=>document.getElementById(id),N=(a,b)=>Math.round(((a||0)+(b||0))*0)+a;
+function tl(d){const L=14,R=746,M=Math.max(d.r,d.e)*1.05,X=t=>(L+(R-L)*t/M).toFixed(1),y0=30,lane=36,rows=d.b.length+(d.pt.length?1:0),H=58+rows*lane+8;
+let o=`<svg viewBox="0 0 760 ${H}" role="img" aria-label="branch timeline">`;
+for(let t=0;t<=M;t+=.5)o+=`<line x1="${X(t)}" x2="${X(t)}" y1="18" y2="${H-18}" class="g"/><text x="${X(t)}" y="${H-5}" class="tk" text-anchor="middle">${t.toFixed(1)}s</text>`;
+o+=`<line x1="${L}" x2="${R}" y1="${y0}" y2="${y0}" class="g"/>`;
+d.c.forEach((c,i)=>o+=`<circle cx="${X(c[0])}" cy="${y0}" r="5.5" fill="var(--acc)"><title>${c[1]}</title></circle>`);
+o+=`<line x1="${X(d.e)}" x2="${X(d.e)}" y1="14" y2="${H-18}" stroke="var(--warn)" stroke-dasharray="4 3"/><text x="${X(d.e)-5}" y="11" class="tk" text-anchor="end">utterance end</text>`;
+d.b.forEach((b,i)=>{const y=y0+30+i*lane,x1=+X(b[1]),x2=+X(b[2]),col=b[3]=="promoted"?"var(--good)":"var(--acc)";
+o+=`<text x="${x1}" y="${y-6}" class="lb">${b[0]}</text><rect x="${x1}" y="${y}" width="${Math.max(x2-x1,4)}" height="10" rx="5" fill="${col}" opacity=".85"><title>${b[0]} · ${b[3]}</title></rect>`;
+b[4].forEach(t=>o+=`<circle cx="${X(t)}" cy="${y+5}" r="4" fill="var(--card)" stroke="var(--ink)" stroke-width="1.4"/>`)});
+if(d.pt.length){const y=y0+30+d.b.length*lane;o+=`<text x="${X(d.pt[0][0])}" y="${y-6}" class="lb">patch retrievals (scoped)</text>`;d.pt.forEach(p=>o+=`<circle cx="${X(p[0])}" cy="${y+5}" r="5" fill="var(--warn)"><title>${p[1]}</title></circle>`)}
+o+=`<path d="M${X(d.r)} ${y0-8}l8 8-8 8-8-8z" fill="var(--good)"><title>answer ready ${d.r}s</title></path></svg>`;return o}
+function card(d,i){return `<section class="card" style="animation-delay:${i*50}ms"><div class="hd"><span class="pill ${d.k}">${d.k}</span><b class="mono">${d.s}</b><span class="mono" style="color:var(--mut)">turn ${d.t} · v${d.v}</span><span class="sc">${d.sc}</span></div>
+<div class="m"><span>first retrieval <b>${d.f==null?"not needed":d.f+"s"}</b></span><span>utterance end <b>${d.e}s</b></span><span>answer ready <b>${d.r}s</b></span><span>after speech <b>+${d.p} ms</b></span></div>
+<div class="q">“${d.q}”</div>${d.n?`<p class="note">${d.n}</p>`:""}${tl(d)}
+<div class="cl">${d.cl.map(c=>`<div class="row"><div class="rl"><span class="tag cite mono">${c[3]}</span><span class="tag s-${c[2]}">${c[2]}</span><span class="id mono">${c[0]} · v${c[1]}</span></div><span></span><p>${T[c[3]]}</p></div>`).join("")}</div></section>`}
+function draw(f){$("out").innerHTML=D.filter(d=>f=="all"||d.s==f).map(card).join("")}
+const ss=[...new Set(D.map(d=>d.s))];
+$("flt").innerHTML=["all",...ss].map(s=>`<button class="chip mono ${s=="all"?"on":""}" data-s="${s}">${s=="all"?"All sessions":s}</button>`).join("");
+$("flt").onclick=e=>{const s=e.target.dataset.s;if(!s)return;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c==e.target));draw(s)};
+const ps=D.map(d=>d.p).sort((a,b)=>a-b),med=ps[ps.length>>1],early=D.filter(d=>d.f!=null&&d.f<d.e).length,ret=D.filter(d=>d.f!=null).length;
+$("stats").innerHTML=[[D.length,"turns traced"],[med+" ms","median answer time after speech"],[early+" / "+ret,"retrievals started before speech ended"],["$0.00","LLM spend (extractive generator)"]].map(x=>`<div class="stat"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
+const R=document.documentElement;R.dataset.theme=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+$("th").onclick=()=>R.dataset.theme=R.dataset.theme=="dark"?"light":"dark";
+draw("all");
+</script></body></html>
