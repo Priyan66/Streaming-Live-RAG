@@ -51,7 +51,9 @@ footer b{background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-backg
 <nav><div class="brand"><span class="logo"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></span>Streaming Live RAG</div><span class="team">TEAM HACKHAZARDS</span><span class="sp"></span><button id="th" aria-label="Toggle theme">◐ Theme</button></nav>
 <main>
 <section class="hero"><div class="eyebrow">Team Hackhazards · Samsung PRISM GenAI Hackathon · Theme 4</div>
-<h1>Live retrieval trace</h1><p>Every fork, patch and citation from the streaming engine, replayed on a timeline. Retrieval starts while the user is still speaking.</p></section>
+<h1>Live retrieval trace</h1><p>Every fork, patch and citation from the streaming engine, replayed on a timeline. Retrieval starts while the user is still speaking.</p>
+<p class="coverage">Scenarios: multi-intent requests, late constraints, presentation-only turns, topic shifts, and slot changes.</p>
+<p class="coverage">Timelines mark transcript chunks, retrieval branches, scoped patch searches, and answer-ready times.</p></section>
 <div class="stats" id="stats"></div>
 <div class="bar" id="flt"></div>
 <div class="legend"><span><i style="width:9px;height:9px;border-radius:50%;background:var(--acc)"></i>transcript chunk</span><span><i style="width:18px;height:7px;border-radius:9px;background:var(--good)"></i>promoted branch</span><span><i style="width:18px;height:7px;border-radius:9px;background:var(--acc)"></i>alive branch</span><span><i style="width:8px;height:8px;border-radius:50%;border:1.5px solid var(--ink)"></i>retrieval</span><span><i style="width:9px;height:9px;border-radius:50%;background:var(--warn)"></i>patch retrieval</span><span><i style="width:0;border-left:2px dashed var(--warn);height:11px"></i>utterance end</span><span>◆ answer ready</span></div>
