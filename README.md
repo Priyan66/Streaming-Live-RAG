@@ -15,9 +15,32 @@ An event-driven RAG engine for live voice and chat. It forks retrieval mid-utter
 
 **p50 answer latency after the user stops speaking: 29 ms** (batch baseline: 445 ms)
 
-[Quickstart](#-quickstart) · [Results](#-results) · [How it works](#-how-it-works) · [Guarantees](#-guarantees) · [Commands](#-commands) · [Layout](#-repository-layout)
+[Start here](#-start-here) · [Quickstart](#-quickstart) · [Results](#-results) · [How it works](#-how-it-works) · [Guarantees](#-guarantees) · [Commands](#-commands) · [Layout](#-repository-layout)
+
+<br>
+
+### [▶️ Watch the demo video](docs/demo_video.mp4) &nbsp;·&nbsp; [📐 Architecture spec](docs/Theme4_RAG_ArchitectureSpec.md) &nbsp;·&nbsp; [📊 Benchmark report](docs/benchmark_report.md)
 
 </div>
+
+---
+
+## 🏁 Start here
+
+> [!IMPORTANT]
+> **Reviewing this submission?** Everything you need is in the [`docs/`](docs) folder. Here is the fastest path through it.
+
+| # | What you want | Open this | Time |
+|---|---|---|---|
+| 1 | **See it working** | [▶️ `docs/demo_video.mp4`](docs/demo_video.mp4) | ~ demo |
+| 2 | **Understand the design** | [📐 `docs/Theme4_RAG_ArchitectureSpec.md`](docs/Theme4_RAG_ArchitectureSpec.md) | full spec |
+| 3 | **Quick architecture overview** | [🧭 `docs/architecture_brief.md`](docs/architecture_brief.md) | short read |
+| 4 | **Check the numbers** | [📊 `docs/benchmark_results.md`](docs/benchmark_results.md) (test split) | tables |
+| 5 | **Read the honest analysis** | [🔍 `docs/benchmark_report.md`](docs/benchmark_report.md) | incl. failures |
+| 6 | **Inspect the trace format** | [🧾 `docs/telemetry_schema.md`](docs/telemetry_schema.md) | schema |
+| 7 | **Run it yourself** | `python run_demo.py` ([Quickstart](#-quickstart)) | one command |
+
+Raw benchmark data: [`benchmark_results.json`](docs/benchmark_results.json) (test) · [`benchmark_results_dev.json`](docs/benchmark_results_dev.json) · [`benchmark_results_dev.md`](docs/benchmark_results_dev.md) (dev split)
 
 ---
 
@@ -273,6 +296,8 @@ Thresholds are generic similarity and probability levels tuned on the **dev** sp
 
 | Doc | Contents |
 |---|---|
+| [`docs/demo_video.mp4`](docs/demo_video.mp4) | Prototype demo video |
+| [`docs/Theme4_RAG_ArchitectureSpec.md`](docs/Theme4_RAG_ArchitectureSpec.md) | Full Theme 4 architecture specification |
 | [`docs/architecture_brief.md`](docs/architecture_brief.md) | Design of the fork policy, decomposition, grounding and patching |
 | [`docs/benchmark_results.md`](docs/benchmark_results.md) | Full tables with all three ablations |
 | [`docs/benchmark_report.md`](docs/benchmark_report.md) | Analysis, including edge-case failures |
