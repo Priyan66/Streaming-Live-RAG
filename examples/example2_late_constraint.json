@@ -1,0 +1,32 @@
+{
+  "id": "example2_late_constraint",
+  "description": "Guide Example 2: late-arriving detail refines, does not restart",
+  "turns": [
+    {
+      "chunks": [
+        [
+          0.0,
+          "Summarize the travel reimbursement"
+        ],
+        [
+          0.7,
+          "rule for an employee trip."
+        ]
+      ],
+      "end": 1.2
+    },
+    {
+      "chunks": [
+        [
+          0.0,
+          "The trip was international and"
+        ],
+        [
+          0.8,
+          "the booking was made after travel."
+        ]
+      ],
+      "end": 1.4
+    }
+  ]
+}

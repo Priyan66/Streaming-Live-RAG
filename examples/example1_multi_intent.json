@@ -1,0 +1,23 @@
+{
+  "id": "example1_multi_intent",
+  "description": "Guide Example 1: incremental multi-intent utterance",
+  "turns": [
+    {
+      "chunks": [
+        [
+          0.0,
+          "I need to plan a customer workshop in"
+        ],
+        [
+          0.8,
+          "Pune for 30 people, and I need"
+        ],
+        [
+          1.6,
+          "the cancellation policy and the catering options."
+        ]
+      ],
+      "end": 2.1
+    }
+  ]
+}

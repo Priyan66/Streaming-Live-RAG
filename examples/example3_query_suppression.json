@@ -1,0 +1,36 @@
+{
+  "id": "example3_query_suppression",
+  "description": "Guide Example 3: presentation-only turn, no retrieval",
+  "turns": [
+    {
+      "chunks": [
+        [
+          0.0,
+          "I need to plan a customer workshop in"
+        ],
+        [
+          0.8,
+          "Pune for 30 people, and I need"
+        ],
+        [
+          1.6,
+          "the cancellation policy and the catering options."
+        ]
+      ],
+      "end": 2.1
+    },
+    {
+      "chunks": [
+        [
+          0.0,
+          "Please repeat your last answer"
+        ],
+        [
+          0.6,
+          "in two bullets."
+        ]
+      ],
+      "end": 1.0
+    }
+  ]
+}

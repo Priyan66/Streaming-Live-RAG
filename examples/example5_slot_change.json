@@ -1,0 +1,36 @@
+{
+  "id": "example5_slot_change",
+  "description": "Slot change (headcount 30 -> 12) re-verifies only the claims that used the slot; the venue claim is patched",
+  "turns": [
+    {
+      "chunks": [
+        [
+          0.0,
+          "Which venue in Pune works"
+        ],
+        [
+          0.8,
+          "for a workshop with 30 people,"
+        ],
+        [
+          1.6,
+          "and what does lunch catering cost?"
+        ]
+      ],
+      "end": 2.1
+    },
+    {
+      "chunks": [
+        [
+          0.0,
+          "Actually we are now"
+        ],
+        [
+          0.6,
+          "expecting only 12 people."
+        ]
+      ],
+      "end": 1.1
+    }
+  ]
+}

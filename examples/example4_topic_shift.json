@@ -1,0 +1,32 @@
+{
+  "id": "example4_topic_shift",
+  "description": "Late utterance that changes intent entirely: claim graph discarded, fresh fork",
+  "turns": [
+    {
+      "chunks": [
+        [
+          0.0,
+          "What is the per diem for"
+        ],
+        [
+          0.7,
+          "a business trip to Pune?"
+        ]
+      ],
+      "end": 1.2
+    },
+    {
+      "chunks": [
+        [
+          0.0,
+          "Forget the trip, the TV"
+        ],
+        [
+          0.7,
+          "in our meeting room shows no picture."
+        ]
+      ],
+      "end": 1.3
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+services:
+  streaming-rag:
+    build: .
+    image: theme4-streaming-rag:latest
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./runs:/app/runs          # traces, outputs.json and dashboard.html land here
+      - ./docs:/app/docs          # benchmark_results.{json,md} are refreshed here
